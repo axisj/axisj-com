@@ -8,7 +8,6 @@ const Index = () => {
         </Layout>
     );
 }
-
 export default Index;
 
 const Div = styled.div`

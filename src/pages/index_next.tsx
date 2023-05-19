@@ -92,7 +92,6 @@ export default function Home() {
               Discover and deploy boilerplate example Next.js&nbsp;projects.
             </p>
           </a>
-
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}

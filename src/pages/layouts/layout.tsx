@@ -9,5 +9,4 @@ const Layout = ( props:any ) =>{
         </main>
     );
 }
-
 export default Layout;
