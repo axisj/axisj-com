@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "@emotion/styled";
 import { Menu } from 'antd';
 import {breakpoint} from "../../theme/media";
@@ -73,11 +73,13 @@ const Header = () =>{
         return () => {
             window.removeEventListener('resize', handleResize);
         };
+
     }, []);
 
     return(
         <Div>
-            {isMobile ? <MenuMobile /> : <MenuDesktop  />}
+            {/*{isMobile ? <MenuMobile /> : <MenuDesktop  />}*/}
+            <MenuDesktop  />
         </Div>
     );
 }
@@ -122,14 +124,17 @@ const Div = styled.div`
             flex-direction:row;
             align-items: center;
             justify-content: center;
+            background:#00f;
         }
     }
     
     //ANTD Override....
     .ant-menu{ //ul...
-        flex: 1;
-        border:1px solid #0f0;
         font-family: "Gmarket Sans", "NotoSansKR", "sans-serif";
+        flex-grow:1;
+        flex-shrink:1;
+        align-items: center;
+        justify-content: center;
         .ant-menu-item{ //li...
             &.ant-menu-item-selected, &.ant-menu-item-active{
                 color:#f00;

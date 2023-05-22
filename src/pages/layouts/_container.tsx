@@ -31,6 +31,7 @@ export default Container;
 const Section = styled.section<props>`
     max-width: 100%;
     margin: 0 auto;
+    transition: all 0.2s ease-out;
     ${media.xs}, ${media.sm}{
     max-width: 100%; 
     }
