@@ -6,6 +6,9 @@ const colors = {
     ax_leaf_green       : '#69896D',
     ax_sandy_brown      : '#E0D0A6',
     ax_skyblue          : '#6FCFEB',
+    ax_text_black      : '#4f4f4f',
+
+    ax_gray_1           : '#BABCC5',
 
     red             : '#f00',
     green           : '#0f0',

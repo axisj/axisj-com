@@ -6,6 +6,7 @@ import Top from "./layouts/_top";
 import Customers from "./layouts/_customers";
 import Container from "./layouts/_container";
 import {Col, Row} from "antd";
+import colors from "../theme/colors";
 
 const Index = () => {
     return(
@@ -15,7 +16,7 @@ const Index = () => {
             <History />
             <Layer>
                 <Container>
-                    <div className={'axTechWrapper'}>
+                    <div className={'axBox axTechWrapper'}>
                         <h2>기술</h2>
                         <Row>
                             <Col span={12}>
@@ -42,9 +43,6 @@ const Index = () => {
                                     <dt><span>액스툴</span><span>2023년 중순 출시예정</span></dt>
                                     <dd>
                                         액스툴은 액스프레임을 보다 쉽게 구축할 수 있는 서비스입니다. 개발자가 없어도 생각했던 사업모델을 기획하고 구축하여 실행에 옮길 수 있습니다. 빠르고 신뢰할 수 있는 액스프레임을 마우스 몇 번만으로 만들 수 있습니다. 비즈니스 모델을 선택하고 미리 준비된 엣지포인트만 넣기만 하면 서비스 완성. 오늘 저녁은 치킨입니다.
-
-
-
                                     </dd>
                                 </dl>
                             </Col>
@@ -65,13 +63,14 @@ const Index = () => {
 
                         </Row>
                     </div>
-                    <div className={'axServiceWrapper'}>
+                    <Spacer />
+                    <div className={'axBox axServiceWrapper'}>
                         <h2>서비스</h2>
                         <Row>
                             <Col span={6}>
                                 <dl>
                                     <dt>아이콘</dt>
-                                    <dt><span>쇼룸</span><span>Showroom</span></dt>
+                                    <dt><span className={'titKo'}>쇼룸</span><span className={'titEn'}>Showroom</span></dt>
                                     <dd>
                                         액시스제이의 제품의 중요 기능과 특징을 소개하는 서비스입니다. 자세한 제품 데모사이트에 다루어지나 쇼룸은 액시스제이의 다양한 제품을 특징적인 기능을 카탈로그처럼 보실 수 있습니다.
                                     </dd>
@@ -80,7 +79,7 @@ const Index = () => {
                             <Col span={6}>
                                 <dl>
                                     <dt>아이콘</dt>
-                                    <dt><span>커뮤니티</span><span>Community</span></dt>
+                                    <dt><span className={'titKo'}>커뮤니티</span><span className={'titEn'}>Community</span></dt>
                                     <dd>
                                         액시스제이의 다양한 기능이나 질문과 답변, 사소한 IT업계의 이야기를 다룹니다. 주로 게시판 형태이며, 회원제를 통해 소통을 깊이를 다르게 하며 MVP 회원 제도 등을 통해 문서와 깃헙 등 다양한 플랫폼과 연계하여 CS업무를 분담하도록 유도합니다.
 
@@ -90,7 +89,7 @@ const Index = () => {
                             <Col span={6}>
                                 <dl>
                                     <dt>아이콘</dt>
-                                    <dt><span>시험센터</span><span>Test Center</span></dt>
+                                    <dt><span className={'titKo'}>시험센터</span><span className={'titEn'}>Test Center</span></dt>
                                     <dd>
                                         테스트 센터는 크게 2가지로 하나는 코드를 웹에서 직접 실행해 볼 수 있는 코드 테스트와 문제은행 CBT 형태의 자격검정 서비스 입니다. 이후 채용 프로세스에 적용될 서비스이며, 이를 통해 액시스제이의 활용과 이해도를 측정하고 자격증 서비스로 확대 할 예정입니다.
 
@@ -101,7 +100,7 @@ const Index = () => {
                             <Col span={6}>
                                 <dl>
                                     <dt>아이콘</dt>
-                                    <dt><span>문서</span><span>Docs</span></dt>
+                                    <dt><span className={'titKo'}>문서</span><span className={'titEn'}>Docs</span></dt>
                                     <dd>
                                         액시스제이의 다양한 제품의 설명과 자세한 사용법을 알려주는 서비스입니다. 코드 설명과 간단한 예제를 통해 쉽고 빠르게 익숙해져보세요.
                                     </dd>
@@ -110,7 +109,8 @@ const Index = () => {
 
                         </Row>
                     </div>
-                    <div className={'axDesignWrapper'}>
+                    <Spacer />
+                    <div className={'axBox axDesignWrapper'}>
                         <h2>디자인</h2>
                         <Row>
                             <Col span={12}>
@@ -221,8 +221,39 @@ const Index = () => {
 export default Index;
 
 const Layer = styled.div`
+    .axBox{
+        h2{
+            text-align:center;
+            font-size:3rem;
+            font-weight: normal;
+        }
+        dl{ 
+            color:${colors.ax_text_black};
+            dt{
+                font-size: 2rem;
+            }
+            dd{ 
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+        }    
+    }
+    
+    .axServiceWrapper{
+        dl{
+            dt{
+                font-size: 1.5rem;
+                .titEn{
+                    font-size: 1.125rem;
+                }
+            }
+            dd{}
+        }
+    }
+   
+    
 `;
 
-const Div = styled.div`
-    background:#f00;
+const Spacer = styled.div`
+    height: 10rem;
 `;

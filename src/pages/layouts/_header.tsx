@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 import { Menu } from 'antd';
 import {breakpoint} from "../../theme/media";
 import Container from "./_container";
+import colors from "../../theme/colors";
+
+import LogoAXSymbol from '../../../public/images/ax-logo.svg';
+import LangSelector from "../components/LangSelector";
 
 const gnbItems = [
     {
@@ -45,13 +49,13 @@ const MenuDesktop = (props) =>{
         <Container>
             <div className={'gnbWrapper'} >
                 <div className={'left'} >
-                    logo
+                    <LogoAXSymbol width={'2rem'} height={'2rem'} fill={colors.ax_supernova_red} />
                 </div>
                 <div className={'center'}>
                     <Menu onClick={handleGnbClick} selectedKeys={[current]} mode="horizontal" items={gnbItems} />
                 </div>
                 <div className={'right'}>
-                    option
+                    <LangSelector width={'1.5rem'} height={'1.5rem'} fill={colors.ax_deep_black} />
                 </div>
             </div>
         </Container>
@@ -89,17 +93,20 @@ export default Header;
 const Layer = styled.div`
     position:fixed;
     width:100%;
-    background:#f00;
+    //background:rgba(255,255,255, 0.6);
     z-index:999;
+    -webkit-backdrop-filter: blur(0.5rem);
+    backdrop-filter: blur(0.5rem);
+
 `;
 
 const Div = styled.div`
     .gnbWrapper{
-        
         display:flex;
         flex-direction:row;
         align-items: center;
         justify-content: center;
+        height:5.5rem;
         .left{
             flex-grow:0;
             flex-shrink:0;
@@ -117,14 +124,13 @@ const Div = styled.div`
             justify-content: center;
         }
         .center{
-            border:1px solid #f00;
             flex-grow:1;
             flex-shrink:1;
             display:flex;
             flex-direction:row;
             align-items: center;
             justify-content: center;
-            background:#00f;
+            //background:#00f;
         }
     }
     
@@ -135,15 +141,22 @@ const Div = styled.div`
         flex-shrink:1;
         align-items: center;
         justify-content: center;
+        background:transparent;
+        border-bottom:none;
+        &.ant-menu-horizontal{
+            line-height:2rem;
+        }
         .ant-menu-item{ //li...
-            &.ant-menu-item-selected, &.ant-menu-item-active{
-                color:#f00;
-                &:after{
-                   border-bottom-color:#f00;
-                }
-            }
-            .ant-menu-title-content{
+            color:${colors.ax_deep_black}
+            font-size:1rem;
+        }
+        .ant-menu-item:hover, .ant-menu-item-selected, .ant-menu-item-active{
+            color:${colors.ax_deep_black};
+            &:after{
+               border-bottom-color:${colors.ax_deep_black};
             }
         }
+        .ant-menu-title-content{
+        }          
     }
 `;

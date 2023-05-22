@@ -20,7 +20,7 @@ export default Layout;
 const Div = styled.div`
     &.AXRoot{
         main{
-            padding-top:4rem;
+            
         }
     }
 `;
