@@ -28,8 +28,7 @@ const gnbItems = [
 ];
 
 const MenuMobile = (props) =>{
-
-
+    return null;
 }
 
 const MenuDesktop = (props) =>{
@@ -128,6 +127,7 @@ const Div = styled.div`
     
     //ANTD Override....
     .ant-menu{ //ul...
+        flex: 1;
         border:1px solid #0f0;
         font-family: "Gmarket Sans", "NotoSansKR", "sans-serif";
         .ant-menu-item{ //li...
