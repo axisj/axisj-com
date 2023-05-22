@@ -14,7 +14,7 @@ const familyData = [
 
 const Footer = () =>{
 
-    const handleFamilyChange = (value) => {
+    const handleFamilyChange = (value:any) => {
         console.log(`selected ${value}`);
     };
 

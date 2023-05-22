@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
 import Layout from "@/pages/layouts/layout";
 import Newsroom from "./layouts/_newsroom";
 import History from "./layouts/_history";
@@ -16,7 +16,7 @@ const Index = () => {
             <History />
             <Layer>
                 <Container>
-                    <div className={'axBox axTechWrapper'}>
+                    <div className={"axBox axTechWrapper"}>
                         <h2>기술</h2>
                         <Row>
                             <Col span={12}>
@@ -64,13 +64,13 @@ const Index = () => {
                         </Row>
                     </div>
                     <Spacer />
-                    <div className={'axBox axServiceWrapper'}>
+                    <div className={"axBox axServiceWrapper"}>
                         <h2>서비스</h2>
                         <Row>
                             <Col span={6}>
                                 <dl>
                                     <dt>아이콘</dt>
-                                    <dt><span className={'titKo'}>쇼룸</span><span className={'titEn'}>Showroom</span></dt>
+                                    <dt><span className={"titKo"}>쇼룸</span><span className={"titEn"}>Showroom</span></dt>
                                     <dd>
                                         액시스제이의 제품의 중요 기능과 특징을 소개하는 서비스입니다. 자세한 제품 데모사이트에 다루어지나 쇼룸은 액시스제이의 다양한 제품을 특징적인 기능을 카탈로그처럼 보실 수 있습니다.
                                     </dd>

@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import LangKo from '../../../public/images/icon-lang-1.svg';
 import LangEn from '../../../public/images/icon-lang-2.svg';
 
-const LangSelector = (props) =>{
+const LangSelector = (props:any) =>{
 
     const [isToggled, setIsToggled] = useState(false);
     const handleClick = () => {
