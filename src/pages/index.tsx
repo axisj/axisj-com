@@ -1,10 +1,15 @@
 import styled from '@emotion/styled'
 import Layout from "@/pages/layouts/layout";
+import Newsroom from "./layouts/_newsroom";
+import History from "./layouts/_history";
+import Top from "./layouts/_top";
 
 const Index = () => {
     return(
         <Layout>
-            <h1>AXISJ</h1>
+            <Top />
+            <Newsroom />
+            <History />
         </Layout>
     );
 }
