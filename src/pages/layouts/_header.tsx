@@ -89,6 +89,7 @@ const Layer = styled.div`
     position:fixed;
     width:100%;
     background:#f00;
+    z-index:999;
 `;
 
 const Div = styled.div`
