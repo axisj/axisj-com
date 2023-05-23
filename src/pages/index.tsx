@@ -33,11 +33,12 @@ const Index = () => {
                             {t('h1')}<br />
                             {t('description')}<br />
                             {t('currentUrl')}<br />
+                            {t('test')}<br />
                         </li>
                         <li>locale: {router.locale}</li>
                     </ul>
                     <div className={"axBox axTechWrapper"}>
-                        <h2>기술</h2>
+                        <h2>{t('titleTech')}</h2>
                         <Row>
                             <Col span={12}>
                                 <dl>
@@ -131,7 +132,7 @@ const Index = () => {
                     </div>
                     <Spacer />
                     <div className={'axBox axDesignWrapper'}>
-                        <h2>디자인</h2>
+                        <h2>{t('titleDesign')}</h2>
                         <Row>
                             <Col span={12}>
                                 <dl>

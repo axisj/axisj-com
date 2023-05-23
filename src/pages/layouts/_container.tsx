@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { media, breakpoint} from "../../theme/media";
+import { media, breakpoint, maxwidth } from "../../theme/media";
 import {ReactNode} from "react";
 
 interface Props{
@@ -34,20 +34,23 @@ const Section = styled.section<Props>`
     max-width: 100%;
     margin: 0 auto;
     transition: all 0.2s ease-out;
-    ${media.xs}, ${media.sm}{
-      max-width: 100%; 
+    ${media.xs}{
+      max-width: ${maxwidth.xs}
+    }
+    ${media.sm}{
+      max-width: ${maxwidth.sm}
     }
     ${media.md}{
-      max-width: ${breakpoint.md}
+      max-width: ${maxwidth.md}
     }
     ${media.lg}{
-      max-width: ${breakpoint.md}
+      max-width: ${maxwidth.md}
     }
     ${media.xl}{
-      max-width: ${breakpoint.xl}
+      max-width: ${maxwidth.xl}
     }
     ${media.ul}{
-      max-width: ${breakpoint.ul}
+      max-width: ${maxwidth.ul}
     }
   
     width:100%;

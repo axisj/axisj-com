@@ -29,12 +29,12 @@ const CardWrap = styled.div`
 
 const Card = styled.dl<props>`
     position:relative;
-    height:24rem;
+    aspect-ratio: auto 1 / 1;
     box-sizing: border-box;
     background-image:${(props) => `url(${props.image})` || null };
     background-size:cover;
     border-radius: 0.5rem;
-    //overflow: hidden;
+    overflow: hidden;
     .textBox{
       position: absolute;
       bottom:0;

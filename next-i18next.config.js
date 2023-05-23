@@ -3,5 +3,8 @@ module.exports = {
     defaultLocale: 'ko',
     locales: ['ko', 'en'],
     localeDetection: false,
+  },
+  fallbackLng: {
+    default: ['ko']
   }
 };

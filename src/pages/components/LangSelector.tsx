@@ -24,12 +24,12 @@ const LangSelector = (props:any) =>{
     return(
         <Button onClick={handleClick}>
             {isToggled ? (
-                <Link href="#" locale="ko">
-                    <LangEn width={props.width} height={props.height} fill={props.fill} />
+                <Link href={router.pathname} locale="ko" scroll={false} >
+                    <LangEn width={props.width} height={props.height} fill={props.fill} locale={"ko"} />
                 </Link>
             ) : (
-                <Link href="#" locale="en">
-                    <LangKo width={props.width} height={props.height} fill={props.fill} />
+                <Link href={router.pathname} locale="en" scroll={false}>
+                    <LangKo width={props.width} height={props.height} fill={props.fill} locale={"en"} />
                 </Link>
             )}
         </Button>

@@ -7,34 +7,47 @@ import colors from "../../theme/colors";
 
 import LogoAXSymbol from '../../../public/images/ax-logo.svg';
 import LangSelector from "../components/LangSelector";
+import {useTranslation} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import Link from "next/link";
+import MenuItem from "antd/es/menu/MenuItem";
 
-
+export const getStaticProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+})
 
 const gnbItems = [
     {
         label: '액시스제이',
-        key: 'axisj'
+        key: 'axisj',
+        lang: 'gnb-1'
     },
     {
         label: '뉴스룸',
-        key: 'newsroom'
+        key: 'newsroom',
+        lang: 'gnb-2'
     },
     {
         label: '기술',
-        key: 'tech'
+        key: 'tech',
+        lang: 'gnb-3'
     },
     {
         label: '서비스',
-        key: 'servcie'
+        key: 'service',
+        lang: 'gnb-4'
     },
     {
         label: '채용',
-        key: 'scout'
+        key: 'scout',
+        lang: 'gnb-5'
     }
 ];
 
 const MenuMobile = () =>{
-    const [current, setCurrent] = useState('axisj');
+    const [current, setCurrent] = useState('gnb-1');
     const [isOpen, setIsOpen] = useState(false);
     const showDrawer = () => {
         setIsOpen(true);
@@ -44,7 +57,7 @@ const MenuMobile = () =>{
     };
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
-        setCurrent(e.key);
+        setCurrent(e.lang);
 
     };
 
@@ -59,7 +72,12 @@ const MenuMobile = () =>{
                         Open
                     </Button>
                     <Drawer title="AXISJ" placement="right" onClose={closeDrawer} open={isOpen}>
-                        <Menu onClick={handleGnbClick} selectedKeys={[current]} mode="vertical" items={gnbItems} />
+                        <Menu
+                            onClick={handleGnbClick}
+                            selectedKeys={[current]}
+                            mode="vertical"
+                            items={gnbItems}
+                        />
                         <LangSelector width={'1.5rem'} height={'1.5rem'} fill={colors.ax_deep_black} />
                     </Drawer>
                 </div>
@@ -70,12 +88,14 @@ const MenuMobile = () =>{
 
 const MenuDesktop = () =>{
 
-    const [current, setCurrent] = useState('axisj');
+    const { t } = useTranslation('common');
+    const [current, setCurrent] = useState('gnb-1');
 
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
-        setCurrent(e.key);
+        setCurrent(e.lang);
     };
+
     //debugger
     return(
     <DesktopLayer>
@@ -85,7 +105,18 @@ const MenuDesktop = () =>{
                     <LogoAXSymbol width={'2rem'} height={'2rem'} fill={colors.ax_supernova_red} />
                 </div>
                 <div className={'center'}>
-                    <Menu onClick={handleGnbClick} selectedKeys={[current]} mode="horizontal" items={gnbItems} />
+                    {/*<Menu onClick={handleGnbClick} selectedKeys={[current]} mode="horizontal" items={gnbItems}/>*/}
+                    <Menu
+                        onClick={handleGnbClick}
+                        selectedKeys={[current]}
+                        mode="horizontal"
+                    >
+                        {gnbItems.map(( menu, index ) => (
+                            <Menu.Item key={menu.lang}>{t(menu.lang)}</Menu.Item>
+                        ))}
+
+                    </Menu>
+
                 </div>
                 <div className={'right'}>
                     <LangSelector width={'1.5rem'} height={'1.5rem'} fill={colors.ax_deep_black} />
@@ -126,8 +157,8 @@ const DesktopLayer = styled.div`
     position:fixed;
     width:100%;
     z-index:999;
-    -webkit-backdrop-filter: blur(0.5rem);
-    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.2rem);
+    backdrop-filter: blur(0.2rem);
   .gnbWrapper{
     display:flex;
     flex-direction:row;

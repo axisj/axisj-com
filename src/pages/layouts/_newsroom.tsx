@@ -4,12 +4,14 @@ import Container from "./_container";
 import NewsCard from "@/pages/components/NewsCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Button, Modal } from 'antd';
 
 import IconInstagram from '../../../public/images/icon-instagram.svg';
 import IconGithub from '../../../public/images/icon-github.svg';
 
 import colors from "@/theme/colors";
 import {breakpoint, media} from "@/theme/media";
+import {useState} from "react";
 
 const newsData = [
     {
@@ -62,21 +64,36 @@ const NextArrow = (props:any) => {
 
 
 const Newsroom = () =>{
+
+    const [open, setOpen] = useState(false);
+    // const [news, setNews] = useState<any | null>(null);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [modalText, setModalText] = useState('Content of the modal');
+    const [titleText, setModalTitleText] = useState('Title');
     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         initialSlide: 0,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         responsive: [
             {
+                breakpoint: parseFloat(breakpoint.xl),
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
                 breakpoint: parseFloat(breakpoint.lg),
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     infinite: true,
                     dots: true
                 }
@@ -85,8 +102,14 @@ const Newsroom = () =>{
                 breakpoint: parseFloat(breakpoint.md),
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: parseFloat(breakpoint.sm),
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             },
             {
@@ -98,15 +121,46 @@ const Newsroom = () =>{
             }
         ]
     };
+
+    const showModal = (news:any) => {
+        setOpen(true);
+        console.log(news);
+        setModalTitleText(news.title);
+        setModalText(news.desc);
+    };
+
+
+    const handleOk = () => {
+        //console.log(">>>"+modalText);
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 100);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
+
     return(
         <Layer>
             <Container>
             <Slider {...settings}>
                 {newsData.map(( news, index ) => (
-                    <NewsCard key={index} image={news.image} title={news.title} desc={news.desc} />
+                    <NewsCard key={index} image={news.image} title={news.title} desc={news.desc} onClick={() => {showModal(news)}} />
                 ))}
             </Slider>
             </Container>
+            <Modal
+                title={titleText}
+                open={open}
+                onOk={handleOk}
+                confirmLoading={confirmLoading}
+                onCancel={handleCancel}
+            >
+                <p>{modalText}</p>
+            </Modal>
         </Layer>
     );
 }

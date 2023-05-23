@@ -1,5 +1,15 @@
 {
+  "titleTech": "Technology",
+  "titleDesign": "Design",
   "h1": "About Page",
   "description": "Hello this is about page",
-  "currentUrl": "current url"
+  "currentUrl": "current url",
+  "designTrust": "Trust",
+  "test": "It is a framework based on React that allows you to build web apps quickly and easily. Core components of XFrame include 'Data Grid', 'Page Tab', 'Tree Manager', and 'Panel Control'. It is based on Nivo for the chart, Summernote for the WYSIWORK editor, and Ant Design for the basic UI set. We look forward to your participation as an open source.",
+
+  "gnb-1": "AXISJ",
+  "gnb-2": "Newsroom",
+  "gnb-3": "Technology",
+  "gnb-4": "Service",
+  "gnb-5": "Scout"
 }

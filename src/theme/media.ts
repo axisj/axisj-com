@@ -1,13 +1,30 @@
 
+const maxwidth = {
+    xs: '302px',
+    sm: '458px',
+    md: '724px',
+    lg: '940px',
+    xl: '1180px',
+    ul: '1300px',
+}
+
+const gutter = {
+    xs: '10px',
+    sm: '10px',
+    md: '20px',
+    lg: '20px',
+    xl: '20px',
+    ul: '20px',
+}
 
 const breakpoint = {
-    xs: '480px',
-    sm: '576px',
+    xs: '320px',
+    sm: '480px',
     md: '768px',
-    lg: '992px',
-    xl: '1200px',
-    ul: '1600px',
-} as const;
+    lg: '1024px',
+    xl: '1280px',
+    ul: '1440px',
+};
 
 const media = {
     xs: `@media (min-width: ${breakpoint.xs})`,
@@ -16,7 +33,7 @@ const media = {
     lg: `@media (min-width: ${breakpoint.lg})`,
     xl: `@media (min-width: ${breakpoint.xl})`,
     ul: `@media (min-width: ${breakpoint.ul})`,
-} as const;
+};
 
 const mediaMax = {
     xs: `@media (max-width: ${breakpoint.xs})`,
@@ -25,6 +42,6 @@ const mediaMax = {
     lg: `@media (max-width: ${breakpoint.lg})`,
     xl: `@media (max-width: ${breakpoint.xl})`,
     ul: `@media (max-width: ${breakpoint.ul})`,
-} as const;
+};
 
-export { breakpoint, media, mediaMax }
+export { breakpoint, media, mediaMax, maxwidth, gutter }
