@@ -8,11 +8,18 @@ import Container from "./layouts/_container";
 import {Col, Row} from "antd";
 import colors from "../theme/colors";
 import { useTranslation } from 'next-i18next';
-
+import {useRouter} from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+export const getStaticProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+})
 
 const Index = () => {
 
-    // const { t, i18n } = useTranslation();
+    const router = useRouter();
+    const { t } = useTranslation('common');
 
     return(
         <Layout>
@@ -21,7 +28,14 @@ const Index = () => {
             <History />
             <Layer>
                 <Container>
-                    {/*<h1>{t('toggleButton')}</h1>*/}
+                    <ul>
+                        <li>
+                            {t('h1')}<br />
+                            {t('description')}<br />
+                            {t('currentUrl')}<br />
+                        </li>
+                        <li>locale: {router.locale}</li>
+                    </ul>
                     <div className={"axBox axTechWrapper"}>
                         <h2>기술</h2>
                         <Row>
