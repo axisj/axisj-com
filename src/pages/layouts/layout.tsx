@@ -3,8 +3,8 @@ import Header from "./_header";
 import styled from "@emotion/styled";
 import Footer from "./_footer";
 
-
 const Layout = ( props:any ) =>{
+
     return(
         <Div className={'AXRoot'}>
             <Header />

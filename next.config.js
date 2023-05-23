@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
@@ -8,7 +9,10 @@ const nextConfig = {
     });
 
     return config;
-  }
+  },
+  i18n: {
+    defaultLocale: 'ko',
+    locales: ['ko', 'en'],
+  },
 }
-
 module.exports = nextConfig

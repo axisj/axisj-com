@@ -8,6 +8,8 @@ import colors from "../../theme/colors";
 import LogoAXSymbol from '../../../public/images/ax-logo.svg';
 import LangSelector from "../components/LangSelector";
 
+
+
 const gnbItems = [
     {
         label: '액시스제이',
@@ -43,6 +45,7 @@ const MenuMobile = () =>{
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
         setCurrent(e.key);
+
     };
 
     return(

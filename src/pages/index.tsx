@@ -7,8 +7,13 @@ import Customers from "./layouts/_customers";
 import Container from "./layouts/_container";
 import {Col, Row} from "antd";
 import colors from "../theme/colors";
+import { useTranslation } from 'next-i18next';
+
 
 const Index = () => {
+
+    // const { t, i18n } = useTranslation();
+
     return(
         <Layout>
             <Top />
@@ -16,6 +21,7 @@ const Index = () => {
             <History />
             <Layer>
                 <Container>
+                    {/*<h1>{t('toggleButton')}</h1>*/}
                     <div className={"axBox axTechWrapper"}>
                         <h2>기술</h2>
                         <Row>
@@ -220,6 +226,7 @@ const Index = () => {
 }
 export default Index;
 
+
 const Layer = styled.div`
     .axBox{
         h2{
@@ -250,10 +257,10 @@ const Layer = styled.div`
             dd{}
         }
     }
-   
     
 `;
 
 const Spacer = styled.div`
     height: 10rem;
 `;
+

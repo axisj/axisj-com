@@ -98,42 +98,6 @@ const Newsroom = () =>{
             }
         ]
     };
-    // const settings = {
-    //     dots: true,
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 3,
-    //     nextArrow: <IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.ax_gray_1}  />,
-    //     prevArrow: <IconGithub width={'1.5rem'} height={'1.5rem'} fill={colors.ax_gray_1}  />,
-    //     responsive:[
-    //         {
-    //             breakpoint: breakpoint.lg,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: breakpoint.md,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 2,
-    //                 initialSlide: 2
-    //             }
-    //         },
-    //         {
-    //             breakpoint: breakpoint.xs,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //     ]
-    // };
-
     return(
         <Layer>
             <Container>
