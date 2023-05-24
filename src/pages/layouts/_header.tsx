@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {forwardRef, useEffect, useRef, useState} from 'react';
 import styled from "@emotion/styled";
 import { Menu, Button, Drawer, Row, Col } from 'antd';
 import {breakpoint} from "../../theme/media";
@@ -49,6 +49,8 @@ const gnbItems = [
 const MenuMobile = () =>{
     const [current, setCurrent] = useState('gnb-1');
     const [isOpen, setIsOpen] = useState(false);
+    const [scroll, setScroll] = useState(false);
+    const headerMobileWrapRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const showDrawer = () => {
         setIsOpen(true);
     };
@@ -60,9 +62,22 @@ const MenuMobile = () =>{
         setCurrent(e.lang);
 
     };
+    const handleScroll = () => {
+        let headerMobileWarpHeight = headerMobileWrapRef.current.clientHeight;
+        let heightGap = window.innerHeight - headerMobileWarpHeight;
+        setScroll(window.scrollY > heightGap);
+        console.log("🛰️heightGap:"+heightGap);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return(
-        <MobileLayer>
+        <MobileLayer className={scroll ? 'scroll' : ''} ref={headerMobileWrapRef}>
             <div className={'gnbMobileWrapper'}>
                 <div className={'left'}>
                     <LogoAXSymbol width={'1.5rem'} height={'1.5rem'} fill={colors.ax_supernova_red} />
@@ -85,20 +100,37 @@ const MenuMobile = () =>{
         </MobileLayer>
     );
 }
+// interface IDivProps {
+//     height: number;
+// }
 
-const MenuDesktop = () =>{
-
+//const MenuDesktop = forwardRef<HTMLDivElement, IDivProps>(({height}, ref) =>{
+const MenuDesktop = () => {
     const { t } = useTranslation('common');
     const [current, setCurrent] = useState('gnb-1');
-
+    const [scroll, setScroll] = useState(false);
+    const headerWrapRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
         setCurrent(e.lang);
     };
+    const handleScroll = () => {
+        let headerWarpHeight = headerWrapRef.current.clientHeight;
+        let heightGap = window.innerHeight - headerWarpHeight;
+        setScroll(window.scrollY > heightGap);
+        console.log("🛰️heightGap:"+heightGap);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     //debugger
     return(
-    <DesktopLayer>
+    <DesktopLayer className={scroll ? 'scroll' : ''} ref={headerWrapRef}>
         <Container>
             <div className={'gnbWrapper'} >
                 <div className={'left'} >
@@ -159,8 +191,12 @@ const DesktopLayer = styled.div`
     z-index:999;
     top:0;
     left:0;
-  -webkit-backdrop-filter: blur(0.2rem);
+    -webkit-backdrop-filter: blur(0.2rem);
     backdrop-filter: blur(0.2rem);
+    transition: all 0.2s ease-out;
+  &.scroll{
+    background:rgba(255,255,255, .9);
+  }
   .gnbWrapper{
     display:flex;
     flex-direction:row;
@@ -231,6 +267,9 @@ const MobileLayer = styled.div`
     left:0;
     -webkit-backdrop-filter: blur(0.5rem);
     backdrop-filter: blur(0.5rem);
+  &.scroll{
+    background:rgba(255,255,255, .9);
+  }
   .gnbMobileWrapper{
     display:flex;
     justify-content: center;
