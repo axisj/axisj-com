@@ -157,7 +157,9 @@ const DesktopLayer = styled.div`
     position:fixed;
     width:100%;
     z-index:999;
-    -webkit-backdrop-filter: blur(0.2rem);
+    top:0;
+    left:0;
+  -webkit-backdrop-filter: blur(0.2rem);
     backdrop-filter: blur(0.2rem);
   .gnbWrapper{
     display:flex;
@@ -224,8 +226,9 @@ const DesktopLayer = styled.div`
 const MobileLayer = styled.div`
     position:fixed;
     width:100%;
-    //background:rgba(255,255,255, 0.6);
     z-index:999;
+    top:0;
+    left:0;
     -webkit-backdrop-filter: blur(0.5rem);
     backdrop-filter: blur(0.5rem);
   .gnbMobileWrapper{

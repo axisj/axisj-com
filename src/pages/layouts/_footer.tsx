@@ -59,6 +59,8 @@ export default Footer;
 const Div = styled.div`
   font-size:0.875rem;
   padding:4rem 0;
+  position: relative;
+  z-index: 5;
   .fcopyright{
     font-size:0.75rem;
   }
