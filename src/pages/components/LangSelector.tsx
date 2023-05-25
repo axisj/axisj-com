@@ -5,22 +5,26 @@ import LangKo from '../../../public/images/icon-lang-1.svg';
 import LangEn from '../../../public/images/icon-lang-2.svg';
 import { useTranslation } from 'next-i18next';
 import Link from "next/link";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const LangSelector = (props:any) =>{
-
+    const { t } = useTranslation('common');
     const router = useRouter();
 
     //const [currentLanguage, setCurrentLanguage] = useState('ko');
 
     const [isToggled, setIsToggled] = useState(false);
     const handleClick = () => {
-
         setIsToggled(!isToggled);
-
-        // const newLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
-        // setCurrentLanguage(newLanguage);
-
     };
+    useEffect (() => {
+        console.log(">>>>"+router.locale);
+
+        if(router.locale === "en"){
+            setIsToggled(true);
+        }
+    },[]);
+
     return(
         <Button onClick={handleClick}>
             {isToggled ? (

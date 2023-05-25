@@ -241,7 +241,7 @@ const Layer = styled.div`
     }
     &.bgService{
       background-image:url('./images/bg-service.jpg');
-      background-size: contain;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
