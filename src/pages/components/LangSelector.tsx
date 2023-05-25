@@ -22,7 +22,7 @@ const LangSelector = (props:any) =>{
         if(router.locale === "en"){
             setIsToggled(true);
         }
-    },[]);
+    },[router.locale]);
 
     return(
         <Button onClick={handleClick}>
