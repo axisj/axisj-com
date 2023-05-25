@@ -18,8 +18,7 @@ const LangSelector = (props:any) =>{
         setIsToggled(!isToggled);
     };
     useEffect (() => {
-        console.log(">>>>"+router.locale);
-
+        console.log("👽router.locale: "+router.locale);
         if(router.locale === "en"){
             setIsToggled(true);
         }
