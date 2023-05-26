@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import colors from "../../theme/colors";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useEffect, useRef, useState} from "react";
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
@@ -11,18 +12,60 @@ export const getStaticProps = async ({ locale }: any) => ({
 
 const Top = () =>{
     const { t } = useTranslation('common');
+    const videoRef = useRef(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [seconds, setSeconds] = useState(0);
+    const [heroTitle, setHeroTitle] = useState(t('hero-title-1'));
+    const [heroDesc, setHeroDesc] = useState(t('hero-title-p-1'));
+
+    useEffect(() => {
+        const video = videoRef.current;
+
+
+        const updateTime = () => {
+            setCurrentTime(video.currentTime);
+            const currentTime = videoRef.current.currentTime;
+            setSeconds( currentTime.toFixed(1) );
+            // console.log(seconds);
+            if(seconds >= 0 && seconds < 3.1){
+                setHeroTitle(t('hero-title-1'));
+                setHeroDesc(t('hero-title-p-1'));
+            }
+            else if(seconds >= 3.1 && seconds < 11.6){
+
+                setHeroTitle(t('hero-title-2'));
+                setHeroDesc(t('hero-title-p-2'));
+            }
+            else if( seconds >= 11.6 && seconds < 15.6){
+                setHeroTitle(t('hero-title-3'));
+                setHeroDesc(t('hero-title-p-3'));
+            }
+            else if( seconds >= 15.6) {
+                setHeroTitle(t('hero-title-4'));
+                setHeroDesc(t('hero-title-p-4'));
+            }
+        };
+
+        // Add event listener to track time updates
+        video.addEventListener('timeupdate', updateTime);
+
+        return () => {
+            // Clean up the event listener on component unmount
+            video.removeEventListener('timeupdate', updateTime);
+        };
+    }, [seconds, heroTitle, heroDesc]);
 
     return(
         <Div>
             <div className={'HeroWrapper'}>
                 <div className={'HeroOverlay'}></div>
-                <video poster="./images/ax-hero-1.jpg" id="background-video" playsInline autoPlay muted loop>
-                    <source src="./video/005A.mp4" type="video/mp4" />
+                <video ref={videoRef} poster="./video/ax-hero.jpg" id="background-video" playsInline autoPlay muted loop>
+                    <source src="./video/ax-hero.mp4" type="video/mp4" />
                 </video>
                 <div className={'HeroTitle'}>
                     <div className={'htbox'}>
-                        <h1>Pioneering a dot</h1>
-                        <p>{t("hero-title-p-1")}</p>
+                        <h1>{heroTitle}</h1>
+                        <p>{heroDesc}</p>
                         <div className={'IconMouseScroll'}></div>
                     </div>
                 </div>
