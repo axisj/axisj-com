@@ -3,12 +3,14 @@ import colors from "../../theme/colors";
 import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useEffect, useRef, useState} from "react";
+import {useRouter} from "next/router";
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
         ...(await serverSideTranslations(locale, ['common'])),
     },
 })
+
 
 const Top = () =>{
     const { t } = useTranslation('common');
@@ -17,32 +19,43 @@ const Top = () =>{
     const [seconds, setSeconds] = useState(0);
     const [heroTitle, setHeroTitle] = useState(t('hero-title-1'));
     const [heroDesc, setHeroDesc] = useState(t('hero-title-p-1'));
-
+    const [titleShow, setTitleShow] = useState([false, false, false, false]);
     useEffect(() => {
         const video = videoRef.current;
-
-
         const updateTime = () => {
             setCurrentTime(video.currentTime);
             const currentTime = videoRef.current.currentTime;
             setSeconds( currentTime.toFixed(1) );
             // console.log(seconds);
             if(seconds >= 0 && seconds < 3.1){
-                setHeroTitle(t('hero-title-1'));
-                setHeroDesc(t('hero-title-p-1'));
+                if(!titleShow[0]) {
+                    setHeroTitle("hero-title-1");
+                    setHeroDesc("hero-title-p-1");
+                    setTitleShow([true, false, false, false]);
+                }
+                // console.log(t('hero-title-p-1'))
             }
             else if(seconds >= 3.1 && seconds < 11.6){
+                if(!titleShow[1]) {
+                    setHeroTitle("hero-title-2");
+                    setHeroDesc("hero-title-p-2");
+                    setTitleShow([false, true, false, false]);
+                }
 
-                setHeroTitle(t('hero-title-2'));
-                setHeroDesc(t('hero-title-p-2'));
             }
             else if( seconds >= 11.6 && seconds < 15.6){
-                setHeroTitle(t('hero-title-3'));
-                setHeroDesc(t('hero-title-p-3'));
+                if(!titleShow[2]) {
+                    setHeroTitle("hero-title-3");
+                    setHeroDesc("hero-title-p-3");
+                    setTitleShow([false, false, true, false]);
+                }
             }
             else if( seconds >= 15.6) {
-                setHeroTitle(t('hero-title-4'));
-                setHeroDesc(t('hero-title-p-4'));
+                if(!titleShow[3]) {
+                    setHeroTitle("hero-title-4");
+                    setHeroDesc("hero-title-p-4");
+                    setTitleShow([false, false, false, true]);
+                }
             }
         };
 
@@ -53,7 +66,7 @@ const Top = () =>{
             // Clean up the event listener on component unmount
             video.removeEventListener('timeupdate', updateTime);
         };
-    }, [seconds, heroTitle, heroDesc]);
+    }, [seconds, heroTitle, heroDesc, titleShow]);
 
     return(
         <Div>
@@ -64,8 +77,10 @@ const Top = () =>{
                 </video>
                 <div className={'HeroTitle'}>
                     <div className={'htbox'}>
-                        <h1>{heroTitle}</h1>
-                        <p>{heroDesc}</p>
+                        <h1>
+                            {t(`${heroTitle}`)}
+                        </h1>
+                        <p>{t(`${heroDesc}`)}</p>
                         <div className={'IconMouseScroll'}></div>
                     </div>
                 </div>
@@ -90,7 +105,7 @@ const Div = styled.div`
         z-index: 1;
         background-size:cover;
         background-position: center;
-        background:#eaeaea url('./images/ax-hero-1.jpg') no-repeat top left;
+        background:#eaeaea url('./video/ax-hero.jpg') no-repeat top left;
         background-size:cover;
       video{
         display: block;
@@ -150,4 +165,5 @@ const Div = styled.div`
        }
      }
    }
+
 `;
