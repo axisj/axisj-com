@@ -1,24 +1,27 @@
 import styled from "@emotion/styled";
 import colors from "../../theme/colors";
-import {useTranslation} from "next-i18next";
+import {i18n, useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
+import Typewriter from 'typewriter-effect';
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
         ...(await serverSideTranslations(locale, ['common'])),
     },
+
 })
 
 
 const Top = () =>{
     const { t } = useTranslation('common');
+    const router = useRouter();
     const videoRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [seconds, setSeconds] = useState(0);
-    const [heroTitle, setHeroTitle] = useState(t('hero-title-1'));
-    const [heroDesc, setHeroDesc] = useState(t('hero-title-p-1'));
+    const [heroTitle, setHeroTitle] = useState('hero-title-1');
+    const [heroDesc, setHeroDesc] = useState('hero-title-p-1');
     const [titleShow, setTitleShow] = useState([false, false, false, false]);
     useEffect(() => {
         const video = videoRef.current;
@@ -36,6 +39,7 @@ const Top = () =>{
                 // console.log(t('hero-title-p-1'))
             }
             else if(seconds >= 3.1 && seconds < 11.6){
+
                 if(!titleShow[1]) {
                     setHeroTitle("hero-title-2");
                     setHeroDesc("hero-title-p-2");
@@ -77,6 +81,13 @@ const Top = () =>{
                 </video>
                 <div className={'HeroTitle'}>
                     <div className={'htbox'}>
+                        {/*<Typewriter*/}
+                        {/*    onInit={(typewriter) => {*/}
+                        {/*        typewriter*/}
+                        {/*            .typeString(`${t(heroTitle)}`)*/}
+                        {/*            .start();*/}
+                        {/*    }}*/}
+                        {/*/>*/}
                         <h1>
                             {t(`${heroTitle}`)}
                         </h1>
