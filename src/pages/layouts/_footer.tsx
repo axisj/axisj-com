@@ -36,12 +36,12 @@ const Footer = () =>{
                                 options={familyData}
                                 className={"fopt1"}
                             />
-                            <Link href={'#'} className={"fopt2"}><IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.ax_gray_1} /></Link>
-                            <Link href={'#'} className={"fopt3"}><IconGithub width={'1.5rem'} height={'1.5rem'} fill={colors.ax_gray_1} /></Link>
+                            <Link href={'#'} className={"fopt2"}><IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
+                            <Link href={'#'} className={"fopt3"}><IconGithub width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
                         </div>
                     </Col>
                 </Row>
-                <Divider />
+                <Divider className={'divider'} />
                 <Row>
                     <Col>
                         <span className={"faddr"}>서울시 영등포구 양평로14길 13, 3F</span>
@@ -63,23 +63,31 @@ const Div = styled.div`
   z-index: 5;
   .fcopyright{
     font-size:0.75rem;
+    color:${colors.white};
   }
     .foptions{
       display: flex;
-      gap: 10px;
+      gap: 0.5rem;
       align-items: center;
       justify-content: center;
       .fopt1{ //antd selector...
         .ant-select-selector{
+          color:${colors.white};
           background:transparent;
-          border:none;
-        } 
+          border:0.063rem solid ${colors.white};
+        }
+        .ant-select-arrow{
+          color:${colors.white};
+        }
       }
       .fopt2{}
       .fopt3{}
     }
   .faddr{
     font-size:0.75rem;
-    color:${colors.ax_gray_1}
+    color:${colors.white}
+  }
+  .divider{
+    border-top: 0.063rem solid ${colors.white};
   }
 `;

@@ -186,7 +186,7 @@ const Layer = styled.div`
    padding:5rem 0;
     h2{
         text-align:center;
-        font-size:3rem;
+        font-size:2.5rem;
         font-weight: normal;
     }
   .slick-prev{
