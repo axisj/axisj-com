@@ -12,6 +12,9 @@ import IconGithub from '../../../public/images/icon-github.svg';
 import colors from "@/theme/colors";
 import {breakpoint, media} from "@/theme/media";
 import {useState} from "react";
+import {useRouter} from "next/router";
+import {useTranslation} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const newsData = [
     {
@@ -35,6 +38,12 @@ const newsData = [
         desc: "다음(Daum)에서 주최한 개발자 행사에 선정되어 부스에서 행사를 하였습나다."
     }
 ];
+
+export const getStaticProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+})
 
 const PrevArrow = (props:any) => {
     const { className, style, onClick } = props;
@@ -64,6 +73,9 @@ const NextArrow = (props:any) => {
 
 
 const Newsroom = () =>{
+
+    const router = useRouter();
+    const { t } = useTranslation('common');
 
     const [open, setOpen] = useState(false);
     // const [news, setNews] = useState<any | null>(null);
@@ -146,6 +158,7 @@ const Newsroom = () =>{
     return(
         <Layer>
             <Container>
+            <h2>{t('title-newsroom')}</h2>
             <Slider {...settings}>
                 {newsData.map(( news, index ) => (
                     <NewsCard key={index} image={news.image} title={news.title} desc={news.desc} onClick={() => {showModal(news)}} />
@@ -170,6 +183,12 @@ export default Newsroom;
 
 
 const Layer = styled.div`
+   padding:5rem 0;
+    h2{
+        text-align:center;
+        font-size:3rem;
+        font-weight: normal;
+    }
   .slick-prev{
     &:before{
       display: none;

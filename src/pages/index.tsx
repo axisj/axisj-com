@@ -10,7 +10,7 @@ import colors from "../theme/colors";
 import { useTranslation } from 'next-i18next';
 import {useRouter} from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import Symbol from "./layouts/_symbol";
 
 import IconTech1 from '../../public/images/ax-tech-1.svg';
 import IconTech2 from '../../public/images/ax-tech-2.svg';
@@ -29,6 +29,7 @@ import IconDesign3 from '../../public/images/ax-design-3.svg';
 import IconDesign4 from '../../public/images/ax-design-4.svg';
 
 
+
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
         ...(await serverSideTranslations(locale, ['common'])),
@@ -44,54 +45,53 @@ const Index = () => {
         <Layout>
             <Top />
             <Section>
-                <Newsroom />
+                { router.locale == "ko" ? <Newsroom /> : <></> }
                 <History />
-                <Layer>
-                    <Container>
-                        <ul>
-                            <li>
-                            </li>
-                            <li></li>
-                        </ul>
-                    </Container>
-                </Layer>
-                <Spacer />
+                <Symbol />
                 <Layer className={'bgTech'}>
                     <Container>
                         <div className={"axBox axTechWrapper"}>
                             <h2>{t('title-tech')}</h2>
-                            <Row>
-                                <Col span={12}>
+                            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl:32 }}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconTech1 /></dt>
-                                        <dt><span>{t('tech-1-title')}</span></dt>
+                                        <dt>
+                                            <IconTech1 />
+                                            <span>{t('tech-1-title')}</span>
+                                        </dt>
                                         <dd>
                                             {t('tech-1-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconTech2 /></dt>
-                                        <dt><span>{t('tech-2-title')}</span></dt>
+                                        <dt>
+                                            <IconTech2 />
+                                            <span>{t('tech-2-title')}</span>
+                                        </dt>
                                         <dd>
                                             {t('tech-2-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconTech3 /></dt>
-                                        <dt><span>{t('tech-3-title')}</span><span>{t('tech-3-badge')}</span></dt>
+                                        <dt>
+                                            <IconTech3 />
+                                            <span>{t('tech-3-title')}</span><span className={'badge'}>{t('tech-3-badge')}</span>
+                                        </dt>
                                         <dd>
                                             {t('tech-3-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconTech4 /></dt>
-                                        <dt><span>{t('tech-4-title')}</span><span>{t('tech-4-badge')}</span></dt>
+                                        <dt>
+                                            <IconTech4 />
+                                            <span>{t('tech-4-title')}</span><span className={'badge'}>{t('tech-4-badge')}</span>
+                                        </dt>
                                         <dd>
                                             {t('tech-4-desc')}
                                         </dd>
@@ -102,42 +102,41 @@ const Index = () => {
                         </div>
                     </Container>
                 </Layer>
-                <Spacer />
                 <Layer className={'bgService'}>
                     <Container>
                         <div className={"axBox axServiceWrapper"}>
                             <h2>{t('title-service')}</h2>
-                            <Row>
-                                <Col span={6}>
+                            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl:32 }}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconService1 /></dt>
+                                        <dt className={'titIcon'}><IconService1 /></dt>
                                         <dt><span className={"titKo"}>{t('service-1-title')}</span><span className={"titEn"}>Showroom</span></dt>
                                         <dd>
                                             {t('service-1-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={6}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconService2 /></dt>
+                                        <dt className={'titIcon'}><IconService2 /></dt>
                                         <dt><span className={'titKo'}>{t('service-2-title')}</span><span className={'titEn'}>Community</span></dt>
                                         <dd>
                                             {t('service-2-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={6}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconService3 /></dt>
+                                        <dt className={'titIcon'}><IconService3 /></dt>
                                         <dt><span className={'titKo'}>{t('service-3-title')}</span><span className={'titEn'}>Test Center</span></dt>
                                         <dd>
                                             {t('service-3-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={6}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
-                                        <dt><IconService4 /></dt>
+                                        <dt className={'titIcon'}><IconService4 /></dt>
                                         <dt><span className={'titKo'}>{t('service-4-title')}</span><span className={'titEn'}>Docs</span></dt>
                                         <dd>
                                             {t('service-4-desc')}
@@ -149,44 +148,43 @@ const Index = () => {
                         </div>
                     </Container>
                 </Layer>
-                <Spacer />
                 <Layer>
                     <Container>
                         <div className={'axBox axDesignWrapper'}>
                             <h2>{t('title-design')}</h2>
-                            <IconDesign />
-                            <Row>
-                                <Col span={12}>
+                            <div className={'titleDesignIcon'}><IconDesign /></div>
+                            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl:32 }}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
-                                        <dt><IconDesign1 /></dt>
-                                        <dt><span>{t('design-1-title')}</span><span>Trust</span></dt>
+                                        <dt className={'titIcon'}><IconDesign1 /></dt>
+                                        <dt><span>{t('design-1-title')}</span><span className={'titEn'}>Trust</span></dt>
                                         <dd>
                                             {t('design-1-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
-                                        <dt><IconDesign2 /></dt>
-                                        <dt><span>{t('design-2-title')}</span><span>Connect</span></dt>
+                                        <dt className={'titIcon'}><IconDesign2 /></dt>
+                                        <dt><span>{t('design-2-title')}</span><span className={'titEn'}>Connect</span></dt>
                                         <dd>
                                             {t('design-2-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
-                                        <dt><IconDesign3 /></dt>
-                                        <dt><span>{t('design-3-title')}</span><span>Growth</span></dt>
+                                        <dt className={'titIcon'}><IconDesign3 /></dt>
+                                        <dt><span>{t('design-3-title')}</span><span className={'titEn'}>Growth</span></dt>
                                         <dd>
                                             {t('design-3-desc')}
                                         </dd>
                                     </dl>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
-                                        <dt><IconDesign4 /></dt>
-                                        <dt><span>{t('design-4-title')}</span><span>Banlance</span></dt>
+                                        <dt className={'titIcon'}><IconDesign4 /></dt>
+                                        <dt><span>{t('design-4-title')}</span><span className={'titEn'}>Banlance</span></dt>
                                         <dd>
                                             {t('design-4-desc')}
                                         </dd>
@@ -197,7 +195,9 @@ const Index = () => {
                         </div>
                     </Container>
                 </Layer>
-                <Customers />
+                <Layer className={'customersLayer'}>
+                    <Customers />
+                </Layer>
             </Section>
         </Layout>
     );
@@ -206,35 +206,98 @@ export default Index;
 
 
 const Layer = styled.div`
+    &.customersLayer{
+        padding:4rem 0;
+    }
     .axBox{
+        padding:5rem 0;
         h2{
             text-align:center;
             font-size:3rem;
             font-weight: normal;
         }
         dl{ 
+            margin-top:4rem;
             color:${colors.ax_text_black};
             dt{
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             dd{ 
                 font-size: 0.875rem;
                 line-height: 1.25rem;
+                word-break: keep-all;
+                padding:1rem 0;
+                margin:0;
             }
-        }    
+        }
     }
-    
+    .badge{
+        display:inline-block;
+        font-size:0.75rem;
+        color:${colors.ax_sandy_brown};
+        padding:0.25rem 0.5rem;
+        border-radius: 5rem;
+        border:0.063rem solid ${colors.ax_sandy_brown}
+    }
+    .axTechWrapper{
+      dl{
+        dt{
+            display:flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap:0.5rem;
+            color:${colors.white}
+        }
+        dd{
+            color:${colors.white}
+        }
+      }    
+    }
     .axServiceWrapper{
         dl{
             dt{
-                font-size: 1.5rem;
+                display:flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap:0.5rem;
+                &.titIcon{
+                    padding-bottom:1rem;
+                }
                 .titEn{
-                    font-size: 1.125rem;
+                    font-size: 1rem;
                 }
             }
             dd{}
         }
     }
+    .axDesignWrapper{
+        .titleDesignIcon{
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top:2rem;
+        }
+        dl{
+            dt{
+                display:flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap:0.5rem;
+                &.titIcon{
+                    padding-bottom:1rem;
+                }
+                .titEn{
+                    font-size: 1rem;
+                }
+            }
+            dd{}
+        }
+    }
+    
     &.bgTech{
       background-color:${colors.black};
       color:${colors.white};

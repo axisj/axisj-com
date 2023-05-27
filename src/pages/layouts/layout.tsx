@@ -2,6 +2,7 @@
 import Header from "./_header";
 import styled from "@emotion/styled";
 import Footer from "./_footer";
+import colors from "../../theme/colors";
 
 const Layout = ( props:any ) =>{
 
@@ -23,4 +24,5 @@ const Div = styled.div`
             
         }
     }
+    
 `;
