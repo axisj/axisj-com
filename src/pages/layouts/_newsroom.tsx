@@ -6,8 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button, Modal } from 'antd';
 
-import IconInstagram from '../../../public/images/icon-instagram.svg';
-import IconGithub from '../../../public/images/icon-github.svg';
+import IconPrev from '../../../public/images/ax-icon-prev.svg';
+import IconNext from '../../../public/images/ax-icon-next.svg';
 
 import colors from "@/theme/colors";
 import {breakpoint, media} from "@/theme/media";
@@ -53,7 +53,7 @@ const PrevArrow = (props:any) => {
             style={{ ...style}}
             onClick={onClick}
         >
-            <IconInstagram width={'1.25rem'} height={'1.25rem'} fill={colors.ax_gray_1}  />
+            <IconPrev width={'1.25rem'} height={'1.25rem'} fill={colors.ax_gray_1}  />
         </div>
     );
 }
@@ -65,7 +65,7 @@ const NextArrow = (props:any) => {
             style={{ ...style}}
             onClick={onClick}
         >
-         <IconInstagram width={'1.25rem'} height={'1.25rem'} fill={colors.ax_gray_1}  />
+         <IconNext width={'1.25rem'} height={'1.25rem'} fill={colors.ax_gray_1}  />
         </div>
     );
 }
@@ -188,6 +188,7 @@ const Layer = styled.div`
         text-align:center;
         font-size:2.5rem;
         font-weight: normal;
+        margin-bottom:1rem;
     }
   .slick-prev{
     &:before{

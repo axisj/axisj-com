@@ -7,7 +7,7 @@ import {useTranslation} from "next-i18next";
 import LogoAXSymbol from '../../../public/images/ax-logo.svg';
 import colors from "../../theme/colors";
 import React from "react";
-import {media} from "@/theme/media";
+import {media, mediaMax} from "@/theme/media";
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
@@ -210,7 +210,7 @@ const Layer = styled.div`
             }
         }
     }
-  ${media.md}{
+  ${mediaMax.md}{
     h2{
       font-size:2.5rem;
     }

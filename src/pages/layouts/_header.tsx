@@ -1,6 +1,6 @@
 import React, {forwardRef, useEffect, useRef, useState} from 'react';
 import styled from "@emotion/styled";
-import { Menu, Button, Drawer, Row, Col } from 'antd';
+import {Menu, Button, Drawer, Row, Col, Modal, Space} from 'antd';
 import {breakpoint} from "../../theme/media";
 import Container from "./_container";
 import colors from "../../theme/colors";
@@ -13,6 +13,9 @@ import Link from "next/link";
 import MenuItem from "antd/es/menu/MenuItem";
 import {useRouter} from "next/router";
 import Newsroom from "@/pages/layouts/_newsroom";
+
+import IconMenu from '../../../public/images/ax-icon-menu.svg';
+import IconMenuClose from '../../../public/images/ax-icon-menu-close.svg';
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
@@ -35,6 +38,17 @@ const MenuMobile = () =>{
     const closeDrawer = () => {
         setIsOpen(false);
     };
+    const info = () => {
+        Modal.info({
+            title: t('modal-info'),
+            content: (
+                <div>
+                    <p>{t('modal-msg-recruit')}</p>
+                </div>
+            ),
+            onOk() {},
+        });
+    };
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
         setCurrent(e.label);
@@ -42,6 +56,13 @@ const MenuMobile = () =>{
         if(e.key === "ko" || e.key === "en"){
             router.push(`${router.pathname}`, undefined, {locale:e.key, scroll:false});
         }
+        if(e.key === "RECRUIT"){
+            info();
+        }else{
+            const IdMatchedPage = document.querySelector(`#${e.key}`);
+            IdMatchedPage?.scrollIntoView({ block: 'start', behavior: "smooth" });
+        }
+
     };
     const handleScroll = () => {
         let headerMobileWarpHeight = headerMobileWrapRef.current.clientHeight;
@@ -61,13 +82,28 @@ const MenuMobile = () =>{
         <MobileLayer className={scroll ? 'scroll' : ''} ref={headerMobileWrapRef}>
             <div className={'gnbMobileWrapper'}>
                 <div className={'left'}>
-                    <LogoAXSymbol width={'1.5rem'} height={'1.5rem'} fill={colors.ax_supernova_red} />
+                    <Link href={'#HOME'}>
+                        <LogoAXSymbol width={'1.5rem'} height={'1.5rem'} fill={colors.ax_supernova_red} />
+                    </Link>
                 </div>
                 <div className={'right'}>
-                    <Button type="primary" onClick={showDrawer}>
-                        Open
+                    <Button type="link" onClick={showDrawer} className={'menuButton'}>
+                        <IconMenu width={24} height={24} fill={`${colors.ax_text_black}`} />
                     </Button>
-                    <Drawer title="AXISJ" placement="right" onClose={closeDrawer} open={isOpen}>
+                    <Drawer
+                        title="AXISJ"
+                        placement="right"
+                        onClose={closeDrawer}
+                        closable={false}
+                        open={isOpen}
+                        extra={
+                            <Space>
+                                <Button type="link" onClick={closeDrawer} className={'menuButton'}>
+                                    <IconMenuClose width={24} height={24} fill={`${colors.ax_text_black}`} />
+                                </Button>
+                            </Space>
+                        }
+                    >
                         { router.locale == "ko" ?
                             <Menu
                                 onClick={handleGnbClick}
@@ -168,14 +204,33 @@ const MenuMobile = () =>{
 const MenuDesktop = () => {
     const { t } = useTranslation('common');
     const router = useRouter();
-
     const [current, setCurrent] = useState(t('gnb-1'));
     const [scroll, setScroll] = useState(false);
     const headerWrapRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const info = () => {
+        Modal.info({
+            title: t('modal-info'),
+            content: (
+                <div>
+                    <p>{t('modal-msg-recruit')}</p>
+                </div>
+            ),
+            onOk() {},
+        });
+    };
     const handleGnbClick = (e:any) => {
+
         console.log('click ', e);
         setCurrent(e.label);
+        if(e.key === "RECRUIT"){
+            info();
+        }else{
+            const IdMatchedPage = document.querySelector(`#${e.key}`);
+            //console.log(">>>>"+IdMatchedPage +" / "+e.key);
+            IdMatchedPage?.scrollIntoView({ block: 'start', behavior: "smooth" });
+        }
     };
+
     const handleScroll = () => {
         let headerWarpHeight = headerWrapRef.current.clientHeight;
         let heightGap = window.innerHeight - headerWarpHeight;
@@ -196,7 +251,9 @@ const MenuDesktop = () => {
         <Container>
             <div className={'gnbWrapper'} >
                 <div className={'left'} >
-                    <LogoAXSymbol width={'2rem'} height={'2rem'} fill={colors.ax_supernova_red} />
+                    <Link href={'#HOME'}>
+                        <LogoAXSymbol width={'2rem'} height={'2rem'} fill={colors.ax_supernova_red} />
+                    </Link>
                 </div>
                 <div className={'center'}>
                     {/*<Menu onClick={handleGnbClick} selectedKeys={[current]} mode="horizontal" items={gnbItems}/>*/}

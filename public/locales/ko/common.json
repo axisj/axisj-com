@@ -79,5 +79,8 @@
   "footer-addr": "서울시 영등포구 양평로14길 13, 3F (우.07222)",
   "footer-family": "Family Site",
   "footer-select-1": "액시스제이",
-  "footer-select-2": "액스프레임"
+  "footer-select-2": "액스프레임",
+
+  "modal-info": "알림",
+  "modal-msg-recruit": "현재는 채용 모집이 없습니다."
 }

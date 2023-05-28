@@ -47,8 +47,8 @@ const Footer = () =>{
                                 ]}
                                 className={"fopt1"}
                             />
-                            <Link href={'#'} className={"fopt2"}><IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
-                            <Link href={'#'} className={"fopt3"}><IconGithub width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
+                            <Link href={'https://www.instagram.com/axisj_official/'} target={'_blank'} className={"fopt2"}><IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
+                            <Link href={'https://github.com/axisj'} target={'_blank'} className={"fopt3"}><IconGithub width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
                         </div>
                     </Col>
                 </Row>

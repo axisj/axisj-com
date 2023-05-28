@@ -43,12 +43,15 @@ const Index = () => {
 
     return(
         <Layout>
-            <a id={'HOME'} />
+            <a id={'HOME'} className={'anchorPoint home'} />
             <Top />
             <Section>
+                <a id={'NEWSROOM'} className={'anchorPoint'} />
                 { router.locale == "ko" ? <Newsroom /> : <></> }
+                <a id={'AXISJ'} className={'anchorPoint'} />
                 <History />
                 <Symbol />
+                <a id={'TECH'} className={'anchorPoint'} />
                 <Layer className={'bgTech'}>
                     <Container>
                         <div className={"axBox axTechWrapper"}>
@@ -103,6 +106,7 @@ const Index = () => {
                         </div>
                     </Container>
                 </Layer>
+                <a id={'SERVICE'} className={'anchorPoint'} />
                 <Layer className={'bgService'}>
                     <Container>
                         <div className={"axBox axServiceWrapper"}>
@@ -161,6 +165,7 @@ const Index = () => {
                         </div>
                     </Container>
                 </Layer>
+                <a id={'DESIGN'} className={'anchorPoint'} />
                 <Layer>
                     <Container>
                         <div className={'axBox axDesignWrapper'}>
@@ -231,7 +236,8 @@ export default Index;
 
 
 const Layer = styled.div`
-    &.customersLayer{
+
+  &.customersLayer{
         padding:4rem 0;
     }
     .axBox{
