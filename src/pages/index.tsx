@@ -43,6 +43,7 @@ const Index = () => {
 
     return(
         <Layout>
+            <a id={'HOME'} />
             <Top />
             <Section>
                 { router.locale == "ko" ? <Newsroom /> : <></> }
@@ -110,7 +111,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
                                         <dt className={'titIcon'}><IconService1 /></dt>
-                                        <dt><span className={"titKo"}>{t('service-1-title')}</span><span className={"titEn"}>Showroom</span></dt>
+                                        <dt>
+                                            <span className={"titKo"}>{t('service-1-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Showroom</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('service-1-desc')}
                                         </dd>
@@ -119,7 +123,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
                                         <dt className={'titIcon'}><IconService2 /></dt>
-                                        <dt><span className={'titKo'}>{t('service-2-title')}</span><span className={'titEn'}>Community</span></dt>
+                                        <dt>
+                                            <span className={'titKo'}>{t('service-2-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Community</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('service-2-desc')}
                                         </dd>
@@ -128,7 +135,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
                                         <dt className={'titIcon'}><IconService3 /></dt>
-                                        <dt><span className={'titKo'}>{t('service-3-title')}</span><span className={'titEn'}>Test Center</span></dt>
+                                        <dt>
+                                            <span className={'titKo'}>{t('service-3-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Test Center</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('service-3-desc')}
                                         </dd>
@@ -137,7 +147,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={6}>
                                     <dl>
                                         <dt className={'titIcon'}><IconService4 /></dt>
-                                        <dt><span className={'titKo'}>{t('service-4-title')}</span><span className={'titEn'}>Docs</span></dt>
+                                        <dt>
+                                            <span className={'titKo'}>{t('service-4-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Docs</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('service-4-desc')}
                                         </dd>
@@ -157,7 +170,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
                                         <dt className={'titIcon'}><IconDesign1 /></dt>
-                                        <dt><span>{t('design-1-title')}</span><span className={'titEn'}>Trust</span></dt>
+                                        <dt>
+                                            <span>{t('design-1-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Trust</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('design-1-desc')}
                                         </dd>
@@ -166,7 +182,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
                                         <dt className={'titIcon'}><IconDesign2 /></dt>
-                                        <dt><span>{t('design-2-title')}</span><span className={'titEn'}>Connect</span></dt>
+                                        <dt>
+                                            <span>{t('design-2-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Connect</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('design-2-desc')}
                                         </dd>
@@ -175,7 +194,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
                                         <dt className={'titIcon'}><IconDesign3 /></dt>
-                                        <dt><span>{t('design-3-title')}</span><span className={'titEn'}>Growth</span></dt>
+                                        <dt>
+                                            <span>{t('design-3-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Growth</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('design-3-desc')}
                                         </dd>
@@ -184,7 +206,10 @@ const Index = () => {
                                 <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                                     <dl>
                                         <dt className={'titIcon'}><IconDesign4 /></dt>
-                                        <dt><span>{t('design-4-title')}</span><span className={'titEn'}>Banlance</span></dt>
+                                        <dt>
+                                            <span>{t('design-4-title')}</span>
+                                            {router.locale == "ko" ? <span className={'titEn'}>Balance</span> : ''}
+                                        </dt>
                                         <dd>
                                             {t('design-4-desc')}
                                         </dd>

@@ -19,7 +19,7 @@ const FadeText = (props) => {
         <Span>
             <span
                 style={{
-                    animation: isVisible ? 'fadeIn 2s' : '',
+                    animation: isVisible ? 'fadeIn 2s' : 'none',
                     opacity: isVisible ? 1 : 0,
                 }}
             >

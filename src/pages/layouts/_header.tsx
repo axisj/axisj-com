@@ -11,6 +11,8 @@ import {useTranslation} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import MenuItem from "antd/es/menu/MenuItem";
+import {useRouter} from "next/router";
+import Newsroom from "@/pages/layouts/_newsroom";
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
@@ -18,36 +20,12 @@ export const getStaticProps = async ({ locale }: any) => ({
     },
 })
 
-const gnbItems = [
-    {
-        label: '액시스제이',
-        key: 'axisj',
-        lang: 'gnb-1'
-    },
-    {
-        label: '뉴스룸',
-        key: 'newsroom',
-        lang: 'gnb-2'
-    },
-    {
-        label: '기술',
-        key: 'tech',
-        lang: 'gnb-3'
-    },
-    {
-        label: '서비스',
-        key: 'service',
-        lang: 'gnb-4'
-    },
-    {
-        label: '채용',
-        key: 'scout',
-        lang: 'gnb-5'
-    }
-];
 
 const MenuMobile = () =>{
-    const [current, setCurrent] = useState('gnb-1');
+    const { t } = useTranslation('common');
+    const router = useRouter();
+
+    const [current, setCurrent] = useState(t('gnb-1'));
     const [isOpen, setIsOpen] = useState(false);
     const [scroll, setScroll] = useState(false);
     const headerMobileWrapRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -59,8 +37,11 @@ const MenuMobile = () =>{
     };
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
-        setCurrent(e.lang);
+        setCurrent(e.label);
 
+        if(e.key === "ko" || e.key === "en"){
+            router.push(`${router.pathname}`, undefined, {locale:e.key, scroll:false});
+        }
     };
     const handleScroll = () => {
         let headerMobileWarpHeight = headerMobileWrapRef.current.clientHeight;
@@ -87,13 +68,92 @@ const MenuMobile = () =>{
                         Open
                     </Button>
                     <Drawer title="AXISJ" placement="right" onClose={closeDrawer} open={isOpen}>
-                        <Menu
-                            onClick={handleGnbClick}
-                            selectedKeys={[current]}
-                            mode="vertical"
-                            items={gnbItems}
-                        />
-                        <LangSelector width={'1.5rem'} height={'1.5rem'} fill={colors.ax_deep_black} />
+                        { router.locale == "ko" ?
+                            <Menu
+                                onClick={handleGnbClick}
+                                selectedKeys={[current]}
+                                mode="vertical"
+                                items={[
+                                    {
+                                        type: 'group', // Must have
+                                        label: `${t('mobile-group-1')}`,
+                                    },
+                                    {
+                                        label: `${t('gnb-1')}`,
+                                        key: 'AXISJ',
+                                    },
+                                    {
+                                        label: `${t('gnb-2')}`,
+                                        key: 'NEWSROOM',
+                                    },
+                                    {
+                                        label: `${t('gnb-3')}`,
+                                        key: 'TECH',
+                                    },
+                                    {
+                                        label: `${t('gnb-4')}`,
+                                        key: 'SERVICE',
+                                    },
+                                    {
+                                        label: `${t('gnb-5')}`,
+                                        key: 'RECRUIT',
+                                    },
+                                    {
+                                        type: 'group', // Must have
+                                        label: `${t('mobile-group-2')}`,
+                                    },
+                                    {
+                                        label: `한국어`,
+                                        key: 'ko',
+                                    },
+                                    {
+                                        label: `English`,
+                                        key: 'en',
+                                    }
+                                ]}
+                            />
+                            :
+                            <Menu
+                                onClick={handleGnbClick}
+                                selectedKeys={[current]}
+                                mode="vertical"
+                                items={[
+                                    {
+                                        type: 'group', // Must have
+                                        label: `${t('mobile-group-1')}`,
+                                    },
+                                    {
+                                        label: `${t('gnb-1')}`,
+                                        key: 'AXISJ',
+                                    },
+                                    {
+                                        label: `${t('gnb-3')}`,
+                                        key: 'TECH',
+                                    },
+                                    {
+                                        label: `${t('gnb-4')}`,
+                                        key: 'SERVICE',
+                                    },
+                                    {
+                                        label: `${t('gnb-5')}`,
+                                        key: 'RECRUIT',
+                                    },
+                                    {
+                                        type: 'group', // Must have
+                                        label: `${t('mobile-group-2')}`,
+                                    },
+                                    {
+                                        label: `한국어`,
+                                        key: 'ko',
+                                    },
+                                    {
+                                        label: `English`,
+                                        key: 'en',
+                                    }
+                                ]}
+                            />
+                        }
+
                     </Drawer>
                 </div>
             </div>
@@ -107,12 +167,14 @@ const MenuMobile = () =>{
 //const MenuDesktop = forwardRef<HTMLDivElement, IDivProps>(({height}, ref) =>{
 const MenuDesktop = () => {
     const { t } = useTranslation('common');
-    const [current, setCurrent] = useState('gnb-1');
+    const router = useRouter();
+
+    const [current, setCurrent] = useState(t('gnb-1'));
     const [scroll, setScroll] = useState(false);
     const headerWrapRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const handleGnbClick = (e:any) => {
         console.log('click ', e);
-        setCurrent(e.lang);
+        setCurrent(e.label);
     };
     const handleScroll = () => {
         let headerWarpHeight = headerWrapRef.current.clientHeight;
@@ -138,16 +200,63 @@ const MenuDesktop = () => {
                 </div>
                 <div className={'center'}>
                     {/*<Menu onClick={handleGnbClick} selectedKeys={[current]} mode="horizontal" items={gnbItems}/>*/}
+                    { router.locale == "ko" ?
                     <Menu
                         onClick={handleGnbClick}
                         selectedKeys={[current]}
                         mode="horizontal"
-                    >
-                        {gnbItems.map(( menu, index ) => (
-                            <Menu.Item key={menu.lang}>{t(menu.lang)}</Menu.Item>
-                        ))}
+                        items={[
+                            {
+                                label: `${t('gnb-1')}`,
+                                key: 'AXISJ',
+                            },
+                            {
+                                label: `${t('gnb-2')}`,
+                                key: 'NEWSROOM',
+                            },
+                            {
+                                label: `${t('gnb-3')}`,
+                                key: 'TECH',
+                            },
+                            {
+                                label: `${t('gnb-4')}`,
+                                key: 'SERVICE',
+                            },
+                            {
+                                label: `${t('gnb-5')}`,
+                                key: 'RECRUIT',
+                            }
+                        ]}
+                    />
+                        :
+                        <Menu
+                            onClick={handleGnbClick}
+                            selectedKeys={[current]}
+                            mode="horizontal"
+                            items={[
+                                {
+                                    label: `${t('gnb-1')}`,
+                                    key: 'AXISJ',
+                                },
+                                {
+                                    label: `${t('gnb-3')}`,
+                                    key: 'TECH',
+                                },
+                                {
+                                    label: `${t('gnb-4')}`,
+                                    key: 'SERVICE',
+                                },
+                                {
+                                    label: `${t('gnb-5')}`,
+                                    key: 'RECRUIT',
+                                }
+                            ]}
+                        />
+                    }
+                    {/*{gnbItems.map(( menu, index ) => (*/}
+                    {/*    <Item key={menu.lang}>{t(menu.lang)}</Item>*/}
+                    {/*))}*/}
 
-                    </Menu>
 
                 </div>
                 <div className={'right'}>

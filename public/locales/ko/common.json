@@ -64,6 +64,9 @@
   "gnb-3": "기술",
   "gnb-4": "서비스",
   "gnb-5": "채용",
+  "mobile-group-1": "메뉴",
+  "mobile-group-2": "언어선택",
+
   "hero-title-1": "Pioneering a dot",
   "hero-title-p-1": "시작은 작은 꿈에서 시작하고...",
   "hero-title-2": "Connecting the dots",
@@ -71,5 +74,10 @@
   "hero-title-3": "We are a dot",
   "hero-title-p-3": "세상의 모든 가치가 연결되는 순간,우리는 놀라운 경험을 얻게 됩니다.",
   "hero-title-4": "A dot is a world",
-  "hero-title-p-4": "점 하나의 세상. 액시스제이"
+  "hero-title-p-4": "점 하나의 세상. 액시스제이",
+
+  "footer-addr": "서울시 영등포구 양평로14길 13, 3F (우.07222)",
+  "footer-family": "Family Site",
+  "footer-select-1": "액시스제이",
+  "footer-select-2": "액스프레임"
 }

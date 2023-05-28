@@ -64,7 +64,10 @@
   "gnb-2": "Newsroom",
   "gnb-3": "Technology",
   "gnb-4": "Service",
-  "gnb-5": "Scout",
+  "gnb-5": "Recruit",
+  "mobile-group-1": "Menu",
+  "mobile-group-2": "Languages",
+
   "hero-title-1": "Pioneering a dot",
   "hero-title-p-1": "It all starts with a small dream...",
   "hero-title-2": "Connecting the dots",
@@ -72,5 +75,10 @@
   "hero-title-3": "We are a dot",
   "hero-title-p-3": "The moment all the values \u200B\u200Bin the world are connected, we get an amazing experience.",
   "hero-title-4": "A dot is a world",
-  "hero-title-p-4": "One dot world. AXISJ"
+  "hero-title-p-4": "One dot world. AXISJ",
+
+  "footer-addr": "13, Yangpyeong-ro 14-gil, Yeongdeungpo-gu, Seoul, Republic of Korea (07222)",
+  "footer-family": "Family Site",
+  "footer-select-1": "AXISJ",
+  "footer-select-2": "AXFrame"
 }

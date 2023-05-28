@@ -6,13 +6,21 @@ import IconInstagram from '../../../public/images/icon-instagram.svg';
 import IconGithub from '../../../public/images/icon-github.svg';
 import Link from "next/link";
 import colors from "../../theme/colors";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useRouter} from "next/router";
+import {useTranslation} from "next-i18next";
 
-const familyData = [
-    { label: 'AXISJ', value:'axisj.com'},
-];
 
+export const getStaticProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+
+})
 
 const Footer = () =>{
+    const router = useRouter();
+    const { t } = useTranslation('common');
 
     const handleFamilyChange = (value:any) => {
         console.log(`selected ${value}`);
@@ -28,12 +36,15 @@ const Footer = () =>{
                     <Col span={12} style={{ alignItems: 'center', justifyContent: 'flex-end', display:'flex' }}>
                         <div className={"foptions"}>
                             <Select
-                                defaultValue="Family Site"
+                                defaultValue={t('footer-family')}
                                 style={{
                                     width: 200,
                                 }}
                                 onChange={handleFamilyChange}
-                                options={familyData}
+                                options={[
+                                    { label: `${t('footer-select-1')}`, value:'axisj.com'},
+                                    { label: `${t('footer-select-2')}`, value:'axframe.axisj.com'},
+                                ]}
                                 className={"fopt1"}
                             />
                             <Link href={'#'} className={"fopt2"}><IconInstagram width={'1.5rem'} height={'1.5rem'} fill={colors.white} /></Link>
@@ -44,7 +55,7 @@ const Footer = () =>{
                 <Divider className={'divider'} />
                 <Row>
                     <Col>
-                        <span className={"faddr"}>서울시 영등포구 양평로14길 13, 3F</span>
+                        <span className={"faddr"}>{t('footer-addr')}</span>
                     </Col>
                 </Row>
 
