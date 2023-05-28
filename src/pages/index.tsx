@@ -253,6 +253,7 @@ const Layer = styled.div`
                 word-break: keep-all;
                 padding:1rem 0;
                 margin:0;
+                white-space: pre-line;
             }
         }
     }

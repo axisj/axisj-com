@@ -352,7 +352,7 @@ const DesktopLayer = styled.div`
       line-height:2rem;
     }
     .ant-menu-item{ //li...
-      color:${colors.ax_deep_black}
+      color:${colors.ax_deep_black};
       font-size:1rem;
     }
     .ant-menu-item:hover, .ant-menu-item-selected, .ant-menu-item-active{
