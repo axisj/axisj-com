@@ -95,7 +95,7 @@ export default Symbol;
 
 
 const Layer = styled.div`
-   padding:5rem 0;
+   padding:5rem 2rem;
    .ciTitleBox{
       display: flex;
       flex-direction: row;
@@ -174,6 +174,7 @@ const Layer = styled.div`
     }
   
     ${media.md}{
+        padding:5rem 0;
         .ciTitleBox{
           .left{width:60%;}
           .right{width:40%;}

@@ -10,7 +10,7 @@ import IconPrev from '../../../public/images/ax-icon-prev.svg';
 import IconNext from '../../../public/images/ax-icon-next.svg';
 
 import colors from "@/theme/colors";
-import {breakpoint, media} from "@/theme/media";
+import {breakpoint, media, mediaMax} from "@/theme/media";
 import {useState} from "react";
 import {useRouter} from "next/router";
 import {useTranslation} from "next-i18next";
@@ -198,6 +198,11 @@ const Layer = styled.div`
   .slick-next{
     &:before{
       display: none;
+    }
+  }
+  ${mediaMax.md}{
+    h2{
+      font-size:2rem;
     }
   }
 `;

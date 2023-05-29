@@ -21,24 +21,26 @@ interface Props{
 
 const Container = ({ children, ...props }: Props) => {
     return(
-        <Section {...props}>
+        <Div {...props}>
             {children}
-        </Section>
+        </Div>
     );
 };
 
 export default Container;
 
 
-const Section = styled.section<Props>`
+const Div = styled.div<Props>`
     max-width: 100%;
     margin: 0 auto;
     transition: all 0.2s ease-out;
     ${media.xs}{
-      max-width: ${maxwidth.xs}
+      max-width: 100%;
+      width:100%;
     }
     ${media.sm}{
-      max-width: ${maxwidth.sm}
+      max-width: 100%;
+      width:100%;
     }
     ${media.md}{
       max-width: ${maxwidth.md}

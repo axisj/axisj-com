@@ -8,6 +8,7 @@ import Typewriter from 'typewriter-effect';
 import Container from "./_container";
 import TypingAnimation from "../components/TypingText";
 import FadeText from "../components/FadeText";
+import {media, mediaMax} from "@/theme/media";
 
 export const getStaticProps = async ({ locale }: any) => ({
     props: {
@@ -185,5 +186,20 @@ const Div = styled.div`
    background-position:center;
  }
 }
- 
+ ${mediaMax.md}{
+   .HeroWrapper {
+     .HeroTitle {
+       .htbox {
+         padding: 0 2rem;
+         h1 {
+           font-size: 1.5rem !important;
+         }
+         p {
+           font-size: 0.875rem !important;
+           line-height: 1rem !important;
+         }
+       }
+     }
+   }
+ }
 `;

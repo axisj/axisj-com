@@ -9,6 +9,7 @@ import colors from "../../theme/colors";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useRouter} from "next/router";
 import {useTranslation} from "next-i18next";
+import {mediaMax} from "@/theme/media";
 
 
 export const getStaticProps = async ({ locale }: any) => ({
@@ -29,11 +30,11 @@ const Footer = () =>{
     return(
         <Div>
             <Container>
-                <Row>
-                    <Col span={12} style={{ alignItems: 'center', justifyContent: 'flex-start', display:'flex' }}>
+                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl:32 }}>
+                    <Col span={24} sm={24} md={12} lg={12} xl={12} xxl={12} className={"colLeft"} >
                         <span className={"fcopyright"}>ⓒ AXISJ Inc. All rights reserved.</span>
                     </Col>
-                    <Col span={12} style={{ alignItems: 'center', justifyContent: 'flex-end', display:'flex' }}>
+                    <Col span={14} sm={24} md={12} lg={12} xl={12} xxl={12} className={"colRight"} >
                         <div className={"foptions"}>
                             <Select
                                 defaultValue={t('footer-family')}
@@ -72,6 +73,18 @@ const Div = styled.div`
   padding:4rem 0;
   position: relative;
   z-index: 5;
+  overflow-x:hidden;
+  
+  colLeft{
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+  }
+  .colRight{
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+  }
   .fcopyright{
     font-size:0.75rem;
     color:${colors.white};
@@ -100,5 +113,15 @@ const Div = styled.div`
   }
   .divider{
     border-top: 0.063rem solid ${colors.white};
+  }
+  ${mediaMax.md}{
+    padding:6rem 2rem;
+    .colLeft{
+      padding:1rem 0;
+    }
+    .colRight{
+      justify-content: flex-start;
+      
+    }
   }
 `;

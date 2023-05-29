@@ -7,7 +7,7 @@ import Customers from "./layouts/_customers";
 import Container from "./layouts/_container";
 import {Col, Row} from "antd";
 import colors from "../theme/colors";
-import { useTranslation } from 'next-i18next';
+import { useTranslation, Trans } from 'next-i18next';
 import {useRouter} from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Symbol from "./layouts/_symbol";
@@ -27,6 +27,7 @@ import IconDesign1 from '../../public/images/ax-design-1.svg';
 import IconDesign2 from '../../public/images/ax-design-2.svg';
 import IconDesign3 from '../../public/images/ax-design-3.svg';
 import IconDesign4 from '../../public/images/ax-design-4.svg';
+import {mediaMax} from "@/theme/media";
 
 
 
@@ -97,7 +98,7 @@ const Index = () => {
                                             <span>{t('tech-4-title')}</span><span className={'badge'}>{t('tech-4-badge')}</span>
                                         </dt>
                                         <dd>
-                                            {t('tech-4-desc')}
+                                            <Trans i18nKey="tech-4-desc" />
                                         </dd>
                                     </dl>
                                 </Col>
@@ -180,7 +181,9 @@ const Index = () => {
                                             {router.locale == "ko" ? <span className={'titEn'}>Trust</span> : ''}
                                         </dt>
                                         <dd>
-                                            {t('design-1-desc')}
+                                            <Trans i18nKey="design-1-desc" />
+                                            {/*{t('design-1-desc').split('\n')}*/}
+                                            {/*{t('design-1-desc')}*/}
                                         </dd>
                                     </dl>
                                 </Col>
@@ -192,7 +195,7 @@ const Index = () => {
                                             {router.locale == "ko" ? <span className={'titEn'}>Connect</span> : ''}
                                         </dt>
                                         <dd>
-                                            {t('design-2-desc')}
+                                            <Trans i18nKey="design-2-desc" />
                                         </dd>
                                     </dl>
                                 </Col>
@@ -204,7 +207,7 @@ const Index = () => {
                                             {router.locale == "ko" ? <span className={'titEn'}>Growth</span> : ''}
                                         </dt>
                                         <dd>
-                                            {t('design-3-desc')}
+                                            <Trans i18nKey="design-3-desc" />
                                         </dd>
                                     </dl>
                                 </Col>
@@ -216,7 +219,7 @@ const Index = () => {
                                             {router.locale == "ko" ? <span className={'titEn'}>Balance</span> : ''}
                                         </dt>
                                         <dd>
-                                            {t('design-4-desc')}
+                                            <Trans i18nKey="design-4-desc" />
                                         </dd>
                                     </dl>
                                 </Col>
@@ -237,7 +240,7 @@ export default Index;
 
 const Layer = styled.div`
 
-  &.customersLayer{
+    &.customersLayer{
         padding:4rem 0;
     }
     .axBox{
@@ -263,6 +266,14 @@ const Layer = styled.div`
             }
         }
     }
+    ${mediaMax.md}{
+      .axBox {
+        padding: 5rem 2rem;
+        h2{
+          font-size:2rem;
+        }
+      }
+    }
     .badge{
         display:inline-block;
         font-size:0.75rem;
@@ -278,6 +289,7 @@ const Layer = styled.div`
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
+            flex-wrap: wrap;
             gap:0.5rem;
             color:${colors.white}
         }
@@ -294,6 +306,7 @@ const Layer = styled.div`
                 justify-content: flex-start;
                 align-items: center;
                 gap:0.5rem;
+                flex-wrap: wrap;
                 &.titIcon{
                     padding-bottom:1rem;
                 }
@@ -319,6 +332,7 @@ const Layer = styled.div`
                 justify-content: flex-start;
                 align-items: center;
                 gap:0.5rem;
+                flex-wrap: wrap;
                 &.titIcon{
                     padding-bottom:1rem;
                 }
@@ -349,6 +363,7 @@ const Section = styled.section`
   margin-top:100vh;
   position: relative;
   z-index: 3;
+  overflow-x:hidden;
   background:${colors.white}
 `;
 
