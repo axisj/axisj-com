@@ -18,11 +18,10 @@ export const getStaticProps = async ({ locale }: any) => ({
 })
 
 
-
 const Top = () =>{
     const { t } = useTranslation('common');
     const router = useRouter();
-    const videoRef = useRef(null);
+    const videoRef = useRef<any>(); //Type error: 'video' is possibly 'null'. 문제 해결
     const [currentTime, setCurrentTime] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [heroTitle, setHeroTitle] = useState('hero-title-1');
@@ -69,13 +68,13 @@ const Top = () =>{
         };
 
         // Add event listener to track time updates
-        video.addEventListener('timeupdate', updateTime);
+            video.addEventListener('timeupdate', updateTime);
 
         return () => {
             // Clean up the event listener on component unmount
             video.removeEventListener('timeupdate', updateTime);
         };
-    }, [seconds, heroTitle, heroDesc, titleShow]);
+    }, [seconds, heroTitle, heroDesc, titleShow])
 
     return(
         <Div>

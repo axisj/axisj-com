@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import colors from "../../theme/colors";
 
 
-const FadeText = (props) => {
+const FadeText = (props:any) => {
     const [text, setText] = useState('');
     const [isVisible, setIsVisible] = useState(false);
 

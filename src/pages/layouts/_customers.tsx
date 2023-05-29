@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import Container from "./_container";
 import Link from "next/link";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import {media, mediaMax} from "../../theme/media";
 
-const logoPath = './logos/';
+const logoPath = '/logos/';
 const customerItem = [
     {   id:1, name:'Doosan', link:'', img: logoPath + 'ref-logo-1.png'},
     {   id:2, name:'Boehringer Ingelheim', link:'', img: logoPath + 'ref-logo-2.png'},
@@ -35,7 +36,7 @@ const Customers = () =>{
             <div className={'maskee right'}></div>
             <Marquee speed={80} autoFill={true} pauseOnHover={true}>
                 {customerItem.map((element, index) => (
-                    <Link href={element.link} key={element.id} target='_blank' rel='noopener noreferrer'><img src={element.img} /></Link>
+                    <Link href={element.link} key={element.id} target='_blank' rel='noopener noreferrer'><Image src={element.img} alt={''} width={200} height={88} /></Link>
                 ))}
             </Marquee>
         </Div>

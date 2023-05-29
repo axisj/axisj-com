@@ -107,7 +107,7 @@ const MenuMobile = () =>{
                         { router.locale == "ko" ?
                             <Menu
                                 onClick={handleGnbClick}
-                                selectedKeys={[current]}
+                                selectedKeys={[current as string]}
                                 mode="vertical"
                                 items={[
                                     {
@@ -151,7 +151,7 @@ const MenuMobile = () =>{
                             :
                             <Menu
                                 onClick={handleGnbClick}
-                                selectedKeys={[current]}
+                                selectedKeys={[current as string]}
                                 mode="vertical"
                                 items={[
                                     {
@@ -260,7 +260,7 @@ const MenuDesktop = () => {
                     { router.locale == "ko" ?
                     <Menu
                         onClick={handleGnbClick}
-                        selectedKeys={[current]}
+                        selectedKeys={[current as string]}
                         mode="horizontal"
                         items={[
                             {
@@ -288,7 +288,7 @@ const MenuDesktop = () => {
                         :
                         <Menu
                             onClick={handleGnbClick}
-                            selectedKeys={[current]}
+                            selectedKeys={[current as string]}
                             mode="horizontal"
                             items={[
                                 {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from "@emotion/styled";
 import colors from "../../theme/colors";
 
-const TypingAnimation = (props) => {
+const TypingAnimation = (props:any) => {
     const [currentText, setCurrentText] = useState('');
 
     useEffect(() => {
