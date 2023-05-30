@@ -80,8 +80,8 @@ const Top = () =>{
         <Div>
             <div className={'HeroWrapper'}>
                 <div className={'HeroOverlay'}></div>
-                <video ref={videoRef} poster="./video/ax-hero.jpg" id="background-video" playsInline autoPlay muted loop>
-                    <source src="./video/ax-hero.mp4" type="video/mp4" />
+                <video ref={videoRef} poster="./video/ax-hero-slow.jpg" id="background-video" playsInline autoPlay muted loop>
+                    <source src="./video/ax-hero-slow.mp4" type="video/mp4" />
                 </video>
                 <div className={'HeroTitle'}>
                     <Container>
