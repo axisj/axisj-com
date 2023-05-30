@@ -12,7 +12,7 @@ const FadeText = (props:any) => {
         setTimeout(() => {
             setText(props.text);
             setIsVisible(true); // Trigger fade-in after a short delay
-        }, 100);
+        }, 200);
     }, [props.text]);
 
     return (

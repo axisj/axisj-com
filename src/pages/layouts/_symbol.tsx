@@ -113,7 +113,7 @@ const Layer = styled.div`
         }
         p{
           padding: 2rem 0;
-          font-size:1rem;
+          font-size:0.875rem;
           line-height:1.3rem;
           word-break: keep-all;
         }

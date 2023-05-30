@@ -114,12 +114,13 @@ const Layer = styled.div`
   }
 
   .historyDetails { //ul...
-    padding: 0 0 0 1rem;
+    padding: 0 2rem;
     list-style: none;
     border-left: 0.25rem solid ${colors.ax_text_black};
     margin: 1.75rem 2rem;
     font-size: 0.875rem;
     line-height: 1.2rem;
+    color:${colors.ax_text_black};
 
     li {
       padding-bottom: 0.5rem;
@@ -236,7 +237,7 @@ const Layer = styled.div`
     }
   }
 
-  ${mediaMax.md} {
+  ${media.md} {
     padding-right: 2rem;
     padding-left: 2rem;
 
@@ -252,7 +253,7 @@ const Layer = styled.div`
     p {
       font-size: 1rem;
       line-height: 1.4rem;
-      margin: 3rem 2rem;
+      margin: 3rem 0;
     }
 
     .timeline {
@@ -283,7 +284,7 @@ const Layer = styled.div`
       line-height: 1.75rem;
     }
     .historyDetails {
-      margin: 3rem 2rem;
+      margin: 3rem 0;
       font-size: 0.875rem;
       line-height: 1.2rem;
     }

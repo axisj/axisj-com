@@ -33,7 +33,7 @@ const Top = () =>{
             setCurrentTime(video.currentTime);
             const currentTime = videoRef.current.currentTime;
             setSeconds( currentTime.toFixed(1) );
-            // console.log(seconds);
+            //console.log(seconds);
             if(seconds >= 0 && seconds < 3.1){
                 if(!titleShow[0]) {
                     setHeroTitle("hero-title-1");
@@ -42,7 +42,7 @@ const Top = () =>{
                 }
                 // console.log(t('hero-title-p-1'))
             }
-            else if(seconds >= 3.1 && seconds < 11.6){
+            else if(seconds >= 5.6 && seconds < 19.4){
 
                 if(!titleShow[1]) {
                     setHeroTitle("hero-title-2");
@@ -51,14 +51,14 @@ const Top = () =>{
                 }
 
             }
-            else if( seconds >= 11.6 && seconds < 15.6){
+            else if( seconds >= 19.4 && seconds < 24.7){
                 if(!titleShow[2]) {
                     setHeroTitle("hero-title-3");
                     setHeroDesc("hero-title-p-3");
                     setTitleShow([false, false, true, false]);
                 }
             }
-            else if( seconds >= 15.6) {
+            else if( seconds >= 24.7) {
                 if(!titleShow[3]) {
                     setHeroTitle("hero-title-4");
                     setHeroDesc("hero-title-p-4");
@@ -87,7 +87,7 @@ const Top = () =>{
                     <Container>
                     <div className={'htbox'}>
                         <h1>
-                            <TypingAnimation text={t(`${heroTitle}`)} speed={100} />
+                            <TypingAnimation text={t(`${heroTitle}`)} speed={200} />
                         </h1>
                         <p>
                             <FadeText text={t(`${heroDesc}`)} />

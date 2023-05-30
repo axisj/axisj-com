@@ -458,4 +458,8 @@ const MobileLayer = styled.div`
       padding:0 1rem;
     }
   }
+  //antd override...
+  .ant-btn{
+    padding:0.25rem;
+  }
 `;
